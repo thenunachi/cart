@@ -1,0 +1,87 @@
+
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #fdf8f6; /* soft cream background */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  background: url("./images/b.jpg");
+}
+
+/* Main wrapper card */
+.App {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+
+
+.mainContent {
+  display: flex;
+  gap: 20px;
+}
+
+/* Dessert grid: left side */
+.dessertGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  flex: 3;
+}
+
+.dessertCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.dessert-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.cartAddition {
+  background-color: #fff;
+  border: 1px solid #d3531a;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cartControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cartControls button {
+  background-color: #d3531a;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Cart summary: right side */
+.cartSummary {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

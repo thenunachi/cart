@@ -3,22 +3,31 @@ import './App.css';
 import React from "react";
 
 
-import { useState } from 'react';
-// import emptyCart from './images/ezgif.com-animated-gif-maker.gif'
+import { useState, useEffect } from 'react';
+import emptyCart from './images/illustration-empty-cart.svg'
 import addToCartSymbol from "./images/icon-add-to-cart.svg";
 import increment from "./images/icon-increment-quantity.svg";
 import decrement from "./images/icon-decrement-quantity.svg";
+import baklava from "./images/image-baklava-desktop.jpg";
+import meringue from "./images/image-meringue-desktop.jpg";
+import waffle from "./images/image-waffle-desktop.jpg";
+import cremeBrulee from "./images/image-creme-brulee-desktop.jpg";
+import macroon from "./images/image-macaron-desktop.jpg";
+import tiramisu from "./images/image-tiramisu-desktop.jpg"
+import pannaCota from "./images/image-panna-cotta-desktop.jpg"
+import brownie from "./images/image-brownie-desktop.jpg"
+import cake from "./images/image-cake-desktop.jpg"
+import AuthTest from './AuthTest';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [showButton, setShowButton] = useState(false);
+
+
   const dessertList = [
     {
       "image": {
-        "thumbnail": "./images/image-waffle-thumbnail.jpg",
-        "mobile": "./images/image-waffle-mobile.jpg",
-        "tablet": "./images/image-waffle-tablet.jpg",
-        "desktop": "./images/image-waffle-desktop.jpg"
+
+        "desktop": `${waffle}`
       },
       "name": "Waffle with Berries",
       "category": "Waffle",
@@ -26,10 +35,8 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-creme-brulee-thumbnail.jpg",
-        "mobile": "./images/image-creme-brulee-mobile.jpg",
-        "tablet": "./images/image-creme-brulee-tablet.jpg",
-        "desktop": "./images/image-creme-brulee-desktop.jpg"
+
+        "desktop": `${cremeBrulee}`
       },
       "name": "Vanilla Bean Crème Brûlée",
       "category": "Crème Brûlée",
@@ -37,10 +44,7 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-macaron-thumbnail.jpg",
-        "mobile": "./images/image-macaron-mobile.jpg",
-        "tablet": "./images/image-macaron-tablet.jpg",
-        "desktop": "./images/image-macaron-desktop.jpg"
+        "desktop": `${macroon}`
       },
       "name": "Macaron Mix of Five",
       "category": "Macaron",
@@ -48,10 +52,7 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-tiramisu-thumbnail.jpg",
-        "mobile": "./images/image-tiramisu-mobile.jpg",
-        "tablet": "./images/image-tiramisu-tablet.jpg",
-        "desktop": "./images/image-tiramisu-desktop.jpg"
+        "desktop": `${tiramisu}`
       },
       "name": "Classic Tiramisu",
       "category": "Tiramisu",
@@ -59,10 +60,7 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-baklava-thumbnail.jpg",
-        "mobile": "./images/image-baklava-mobile.jpg",
-        "tablet": "./images/image-baklava-tablet.jpg",
-        "desktop": "./images/image-baklava-desktop.jpg"
+        "desktop": `${baklava}`
       },
       "name": "Pistachio Baklava",
       "category": "Baklava",
@@ -70,10 +68,7 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-meringue-thumbnail.jpg",
-        "mobile": "./images/image-meringue-mobile.jpg",
-        "tablet": "./images/image-meringue-tablet.jpg",
-        "desktop": "./images/image-meringue-desktop.jpg"
+        "desktop": `${meringue}`
       },
       "name": "Lemon Meringue Pie",
       "category": "Pie",
@@ -81,10 +76,7 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-cake-thumbnail.jpg",
-        "mobile": "./images/image-cake-mobile.jpg",
-        "tablet": "./images/image-cake-tablet.jpg",
-        "desktop": "./images/image-cake-desktop.jpg"
+        "desktop": `${cake}`
       },
       "name": "Red Velvet Cake",
       "category": "Cake",
@@ -92,10 +84,7 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-brownie-thumbnail.jpg",
-        "mobile": "./images/image-brownie-mobile.jpg",
-        "tablet": "./images/image-brownie-tablet.jpg",
-        "desktop": "./images/image-brownie-desktop.jpg"
+        "desktop": `${brownie}`
       },
       "name": "Salted Caramel Brownie",
       "category": "Brownie",
@@ -103,60 +92,78 @@ function App() {
     },
     {
       "image": {
-        "thumbnail": "./images/image-panna-cotta-thumbnail.jpg",
-        "mobile": "./images/image-panna-cotta-mobile.jpg",
-        "tablet": "./images/image-panna-cotta-tablet.jpg",
-        "desktop": "./images/image-panna-cotta-desktop.jpg"
+        "desktop": `${pannaCota}`
       },
       "name": "Vanilla Panna Cotta",
       "category": "Panna Cotta",
       "price": 6.50
     }
   ]
-  const handleAddClick = () => {
-    setShowButton(true);
-  }
-  const addToCart = () => {
-    setCount((prevCount) => prevCount + 1)
-  }
-  const removeFromCart = () => {
-    setCount(prevCount => Math.max(0, prevCount - 1))
-  }
-  const totalItems = Object.values(count).reduce((sum, c) => sum + c, 0);
+  const [cartItems, setCartItems] = useState({});
+  const [showButton, setShowButton] = useState({});
+  const handleAddClick = (name) => {
+    setShowButton(prev => ({ ...prev, [name]: true }));
+  };
+  const addToCart = (dessert) => {
+    setCartItems(prev => ({
+      ...prev,
+      [dessert.name]: {
+        price: dessert.price,
+        count: prev[dessert.name]?.count ? prev[dessert.name].count + 1 : 1
+      }
+    }));
+  };
+
+  const removeFromCart = (dessert) => {
+    setCartItems(prev => ({
+      ...prev,
+      [dessert.name]: {
+        price: dessert.price,
+        count: prev[dessert.name]?.count ? Math.max(0, prev[dessert.name].count - 1) : 0
+      }
+    }));
+  };
+  useEffect(() => {
+
+  }, [cartItems])
+  console.log(cartItems, "cartITems")
   return (
-    
+
     <div className="App">
-     
+{<AuthTest />}
       <h1>Desserts</h1>
       <div className="mainContent">
         <div className="dessertGrid">
-          {dessertList.map((dessert) => (
+          {dessertList.map((dessert) =>
             <div key={dessert.name} className="dessertCard">
               <img src={dessert.image.desktop} alt={dessert.name} className="dessert-img" />
+              <h4>{dessert.category}</h4>
               <h3>{dessert.name}</h3>
               <p>${dessert.price}</p>
+              {!showButton[dessert.name] ? (
+                <button onClick={() => handleAddClick(dessert.name)}>
+                  <span><img src={addToCartSymbol} /></span>
+                  <span>Add to Cart</span>
+                </button>
+              ) : (
+                <>
+                  <button onClick={() => addToCart(dessert)}><img src={increment} /></button>
 
-              {/* {!showButton[dessert.name] ? (
-            <button className='cartAddition' onClick={() => handleAddClick(dessert.name)}>
-              <img src={addToCartSymbol} /> Add to Cart
-            </button>
-          ) : (
-            <div className="cartControls">
-              <button onClick={() => addToCart(dessert.name)}><img src={increment} /></button>
-              <span>{count[dessert.name]}</span>
-              <button onClick={() => removeFromCart(dessert.name)}><img src={decrement} /></button>
+                  <span>{cartItems[dessert.name]?.count || 0}</span>
+                  <button onClick={() => removeFromCart(dessert)}><img src={decrement} /></button>
+                </>
+              )}
             </div>
-          )} */}
-            </div>
-          ))}
+          )}
         </div>
 
         <div className="cartSummary">
-          <h2>Your Cart ({totalItems})</h2>
+          {/* <h2>Your Cart ({totalItems})</h2> */}
+          <h2>Your Cart </h2>
+          <img src={emptyCart} />
+          <h3>Your added items appear here.</h3>
           <ul>
-            {Object.entries(count).map(([name, count]) =>
-              count > 0 ? <li key={name}>{name}: {count}</li> : null
-            )}
+            {count > 0 ? <li key="cart-count">Items: {count}</li> : <li>Your cart is empty.</li>}
           </ul>
           {/* <p>Total: ${calculateTotal()}</p> */}
           <button className="confirmOrder">Confirm Order</button>

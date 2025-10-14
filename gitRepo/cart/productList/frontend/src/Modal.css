@@ -1,0 +1,146 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 420px;
+  max-width: 90%;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalHeader {
+  margin-bottom: 20px;
+}
+
+.successIcon {
+  color: #2ecc71;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3c2412;
+  margin: 0;
+}
+
+.modalSubtitle {
+  font-size: 1rem;
+  color: #7a7a7a;
+  margin-top: 4px;
+}
+
+.modalContent {
+  background: #fff7f2;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.modalItemList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modalItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0e0d5;
+}
+
+.modalItem:last-child {
+  border-bottom: none;
+}
+
+.modalItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modalItemImage {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.modalItemName {
+  font-weight: 600;
+  color: #3c2412;
+  margin: 0;
+}
+
+.modalItemDetails {
+  font-size: 0.9rem;
+  color: #7a7a7a;
+}
+
+.modalItemCount {
+  color: #c44500;
+  font-weight: 600;
+}
+
+.modalItemEach {
+  color: #7a7a7a;
+}
+
+.modalItemTotal {
+  font-weight: 600;
+  color: #3c2412;
+}
+
+.orderTotalSection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #3c2412;
+}
+
+.newOrderButton {
+  background-color: #d04a00;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.newOrderButton:hover {
+  background-color: #b83f00;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

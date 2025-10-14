@@ -18,11 +18,15 @@ import pannaCota from "./images/image-panna-cotta-desktop.jpg"
 import brownie from "./images/image-brownie-desktop.jpg"
 import cake from "./images/image-cake-desktop.jpg"
 import AuthTest from './AuthTest';
+import Navbar from './Navbar';
+import CartSummary from './Cart';
+
+
 
 function App() {
   const [count, setCount] = useState(0);
 
-
+  const [total, setTotal] = useState(0)
   const dessertList = [
     {
       "image": {
@@ -101,6 +105,9 @@ function App() {
   ]
   const [cartItems, setCartItems] = useState({});
   const [showButton, setShowButton] = useState({});
+
+
+
   const handleAddClick = (name) => {
     setShowButton(prev => ({ ...prev, [name]: true }));
   };
@@ -109,7 +116,8 @@ function App() {
       ...prev,
       [dessert.name]: {
         price: dessert.price,
-        count: prev[dessert.name]?.count ? prev[dessert.name].count + 1 : 1
+        count: prev[dessert.name]?.count ? prev[dessert.name].count + 1 : 1,
+        img: dessert.image.desktop
       }
     }));
   };
@@ -119,18 +127,29 @@ function App() {
       ...prev,
       [dessert.name]: {
         price: dessert.price,
-        count: prev[dessert.name]?.count ? Math.max(0, prev[dessert.name].count - 1) : 0
+        count: prev[dessert.name]?.count ? Math.max(0, prev[dessert.name].count - 1) : 0,
+        img: dessert.image.desktop
       }
     }));
   };
   useEffect(() => {
-
+    const newTotal = Object.values(cartItems).reduce((acc, item) => {
+      return acc + item.price * item.count;
+    }, 0);
+    setTotal(newTotal)
   }, [cartItems])
   console.log(cartItems, "cartITems")
+
+  const handleRemoveItem = (itemName) => {
+   const updatedCart = {...cartItems}
+   delete updatedCart[itemName]
+   setCartItems(updatedCart)
+  };
   return (
 
     <div className="App">
-{<AuthTest />}
+      {/* {<Navbar/>} */}
+      {/* {<AuthTest />} */}
       <h1>Desserts</h1>
       <div className="mainContent">
         <div className="dessertGrid">
@@ -157,17 +176,7 @@ function App() {
           )}
         </div>
 
-        <div className="cartSummary">
-          {/* <h2>Your Cart ({totalItems})</h2> */}
-          <h2>Your Cart </h2>
-          <img src={emptyCart} />
-          <h3>Your added items appear here.</h3>
-          <ul>
-            {count > 0 ? <li key="cart-count">Items: {count}</li> : <li>Your cart is empty.</li>}
-          </ul>
-          {/* <p>Total: ${calculateTotal()}</p> */}
-          <button className="confirmOrder">Confirm Order</button>
-        </div>
+        <CartSummary cartItems={cartItems} onRemoveItem={handleRemoveItem} />
       </div>
     </div>
   );

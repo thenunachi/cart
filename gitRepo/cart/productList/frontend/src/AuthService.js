@@ -6,12 +6,13 @@ export const signup = async (username, password) => {
     return response.data;
 }
 
+
 export const login = async (username, password) => {
-    const response = await axios.post(`${API_URL}/login`, { username, password })
-    const { access_token } = response.data;
-    localStorage.setItem('token', access_token);
-    return access_token;
-}
+  const response = await axios.post(`${API_URL}/login`, { username, password });
+  const { access_token, user_id, username: userName } = response.data;
+  return { token: access_token, userId: user_id, username: userName };
+};
+
 
 export const getProtectedData = async () => {
   const token = localStorage.getItem('token');

@@ -3,9 +3,10 @@ import { FaTimes } from "react-icons/fa";
 import emptyCart from './images/illustration-empty-cart.svg'
 import "./cart.css";
 import Modal from './Modal';
+import { saveOrder } from "./services/orderServices"
 
-export default function CartSummary({ cartItems, onRemoveItem }) {
-    console.log(cartItems,"cartItems from cart")
+export default function CartSummary({ user, cartItems, onRemoveItem }) {
+    console.log(cartItems, "cartItems from cart")
     const [total, setTotal] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const totalItems = Object.values(cartItems).reduce(
@@ -20,6 +21,19 @@ export default function CartSummary({ cartItems, onRemoveItem }) {
         );
         setTotal(newTotal);
     }, [cartItems]);
+    
+    const handleConfirmOrder = async () => {
+       
+        if (!user.userId) return alert("Please log in to confirm your order.");
+        if (Object.keys(cartItems).length === 0) return;
+        console.log("is it coming here")
+        try {
+            await saveOrder(user.userId, cartItems, total);
+            setIsModalOpen(true);
+        } catch (error) {
+            console.error("Error saving order:", error);
+        }
+    };
 
     const hasItems = Object.keys(cartItems).length > 0;
 
@@ -62,13 +76,21 @@ export default function CartSummary({ cartItems, onRemoveItem }) {
                         This is a <span className="carbonBold">carbon-neutral</span> delivery
                     </div>
 
-                    <button onClick={() => setIsModalOpen(true)} className="confirmOrderButton">Confirm Order</button>
-                   <Modal
-  isOpen={isModalOpen}
-  onClose={() => setIsModalOpen(false)}
-  cartItems={cartItems}
-  total={total}
-/>
+                    <button
+                        onClick={() => {
+                            console.log("🖱️ Button clicked!");
+                            handleConfirmOrder();
+                        }}
+                        className="confirmOrderButton"
+                    >
+                        Confirm Order
+                    </button>
+                    <Modal
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        cartItems={cartItems}
+                        total={total}
+                    />
                 </>
             ) : (
                 <div className="emptyCart">

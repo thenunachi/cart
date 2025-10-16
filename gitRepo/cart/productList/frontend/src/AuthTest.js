@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signup, login, getProtectedData } from './AuthService';
 
-function AuthTest() {
+function AuthTest({onLogin}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -11,9 +11,11 @@ function AuthTest() {
     setMessage('Signup successful!');
   };
 
-  const handleLogin = async () => {
-    await login(username, password);
-    setMessage('Login successful!');
+ const handleLogin = async () => {
+    const data = await login(username, password);
+    // setUser(data); // ✅ store the logged-in user details
+    setMessage(`Login successful! Welcome ${data.username}`);
+    onLogin(data);
   };
 
   const handleProtected = async () => {

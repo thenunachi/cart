@@ -105,9 +105,9 @@ function App() {
   ]
   const [cartItems, setCartItems] = useState({});
   const [showButton, setShowButton] = useState({});
+ const [user, setUser] = useState(null);
 
-
-
+console.log(user,"user from app")
   const handleAddClick = (name) => {
     setShowButton(prev => ({ ...prev, [name]: true }));
   };
@@ -148,8 +148,8 @@ function App() {
   return (
 
     <div className="App">
-      {/* {<Navbar/>} */}
-      {/* {<AuthTest />} */}
+    {<Navbar/>} 
+       <AuthTest onLogin={setUser} />
       <h1>Desserts</h1>
       <div className="mainContent">
         <div className="dessertGrid">
@@ -176,7 +176,7 @@ function App() {
           )}
         </div>
 
-        <CartSummary cartItems={cartItems} onRemoveItem={handleRemoveItem} />
+        <CartSummary user={user} cartItems={cartItems} onRemoveItem={handleRemoveItem} />
       </div>
     </div>
   );

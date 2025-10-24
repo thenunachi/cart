@@ -148,7 +148,7 @@ console.log(user,"user from app")
   return (
 
     <div className="App">
-    {<Navbar/>} 
+<Navbar user={user} />  
        <AuthTest onLogin={setUser} />
       <h1>Desserts</h1>
       <div className="mainContent">

@@ -21,9 +21,9 @@ export default function CartSummary({ user, cartItems, onRemoveItem }) {
         );
         setTotal(newTotal);
     }, [cartItems]);
-    
+
     const handleConfirmOrder = async () => {
-       
+
         if (!user.userId) return alert("Please log in to confirm your order.");
         if (Object.keys(cartItems).length === 0) return;
         console.log("is it coming here")
@@ -49,12 +49,19 @@ export default function CartSummary({ user, cartItems, onRemoveItem }) {
                         {Object.entries(cartItems).map(([key, value]) => (
                             <li key={key} className="cartItem">
                                 <div className="cartItemDetails">
-                                    <p className="cartItemName">{key}</p>
-                                    <p className="cartItemPrice">
-                                        <span className="cartItemCount">{value.count}x</span>{" "}
-                                        <span className="cartItemEach">@ ${value.price.toFixed(2)}</span>{" "}
-                                        <span className="cartItemTotal">${(value.price * value.count).toFixed(2)}</span>
-                                    </p>
+                                    <img
+                                        src={value.img}
+                                        alt={key}
+                                        className="cartItemImage"
+                                    />
+                                    <div className="cartItemText">
+                                        <p className="cartItemName">{key}</p>
+                                        <p className="cartItemPrice">
+                                            <span className="cartItemCount">{value.count}x</span>
+                                            <span className="cartItemEach">@ ${value.price.toFixed(2)}</span>
+                                            <span className="cartItemTotal">${(value.price * value.count).toFixed(2)}</span>
+                                        </p>
+                                    </div>
                                 </div>
                                 <button
                                     onClick={() => onRemoveItem(key)}

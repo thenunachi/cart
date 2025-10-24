@@ -41,7 +41,8 @@ def login():
     user = User.query.filter_by(username=username).first()
     if not user or not user.check_password(password):
         return jsonify({"message": "Invalid creadentials"}),401
-    token = create_access_token(identity={"id": user.id, "username": username})
+    token = create_access_token(identity=str(user.id),  # must be string or int
+    additional_claims={"username": user.username})
     return jsonify(access_token=token, user_id=user.id, username=username), 200
 
 @app.route('/protected', methods=['GET'])
@@ -53,7 +54,7 @@ def protected():
 @app.route('/orders', methods=['POST'])
 def create_order():
     data = request.get_json()
-    print(data,"data")
+    # print(data,"data")
     user_id = data.get('user_id')
     items = data.get('items')
     total = data.get('total')
@@ -70,11 +71,23 @@ def create_order():
     db.session.commit()
     return jsonify({"message": "Order created successfully", "order": new_order.to_dict()}), 201
 
+# @app.route('/orders', methods=['GET'])
+# @jwt_required()
+# def get_user_orders():
+#     username = get_jwt_identity()
+#     user = User.query.filter_by(username=username).first()
+
+#     if not user:
+#         return jsonify({"error": "User not found"}), 404
+
+#     orders = Order.query.filter_by(user_id=user.id).order_by(Order.created_at.desc()).all()
+#     print(orders,"orders")
+#     return jsonify([order.to_dict() for order in orders])
 @app.route('/orders', methods=['GET'])
 @jwt_required()
 def get_user_orders():
-    username = get_jwt_identity()
-    user = User.query.filter_by(username=username).first()
+    user_id = int(get_jwt_identity())  # ✅ convert to int since identity is ID
+    user = User.query.get(user_id)
 
     if not user:
         return jsonify({"error": "User not found"}), 404

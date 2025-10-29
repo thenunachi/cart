@@ -23,7 +23,7 @@ import CartSummary from './Cart';
 
 
 
-function App() {
+function App({user,setUser}) {
   const [count, setCount] = useState(0);
 
   const [total, setTotal] = useState(0)
@@ -105,9 +105,9 @@ function App() {
   ]
   const [cartItems, setCartItems] = useState({});
   const [showButton, setShowButton] = useState({});
- const [user, setUser] = useState(null);
+  
 
-console.log(user,"user from app")
+  console.log(user, "user from app")
   const handleAddClick = (name) => {
     setShowButton(prev => ({ ...prev, [name]: true }));
   };
@@ -141,15 +141,15 @@ console.log(user,"user from app")
   console.log(cartItems, "cartITems")
 
   const handleRemoveItem = (itemName) => {
-   const updatedCart = {...cartItems}
-   delete updatedCart[itemName]
-   setCartItems(updatedCart)
+    const updatedCart = { ...cartItems }
+    delete updatedCart[itemName]
+    setCartItems(updatedCart)
   };
   return (
 
     <div className="App">
-<Navbar user={user} />  
-       <AuthTest onLogin={setUser} />
+      <Navbar user={user} />
+      {/* <AuthTest onLogin={setUser} /> */}
       <h1>Desserts</h1>
       <div className="mainContent">
         <div className="dessertGrid">

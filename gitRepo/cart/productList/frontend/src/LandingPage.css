@@ -1,0 +1,64 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh; */
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 20px;
+      border-radius: 7%;
+}
+
+.landing-logo {
+  width: 120px;
+  margin-bottom: 24px;
+}
+
+.landing-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.landing-subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+}
+
+.login-btn,
+.signup-btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn {
+  background-color: #2563eb;
+}
+
+.login-btn:hover {
+  background-color: #1e40af;
+}
+
+.signup-btn {
+  background-color: #16a34a;
+}
+
+.signup-btn:hover {
+  background-color: #15803d;
+}
+
+.auth-section {
+  margin-top: 20px;
+}

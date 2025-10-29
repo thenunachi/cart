@@ -6,7 +6,7 @@ import Modal from './Modal';
 import { saveOrder } from "./services/orderServices"
 
 export default function CartSummary({ user, cartItems, onRemoveItem }) {
-    console.log(cartItems, "cartItems from cart")
+    console.log(user,cartItems, "cartItems from cart")
     const [total, setTotal] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const totalItems = Object.values(cartItems).reduce(

@@ -8,7 +8,7 @@ const LandingPage = ({onLogin}) => {
     console.log(showAuth,"showAuth")
     return (
         <div className="landing-container">
-            <h1 className="landing-title">Welcome to Inippagam</h1>
+            <h1 className="landing-title">Welcome to இனிப்பகம் 🍨</h1>
             <p className="landing-subtitle">
                 Sign up or login to start ordering desserts!
             </p>

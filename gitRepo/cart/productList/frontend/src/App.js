@@ -23,7 +23,7 @@ import CartSummary from './Cart';
 
 
 
-function App({user,setUser}) {
+function App({ user, setUser }) {
   const [count, setCount] = useState(0);
 
   const [total, setTotal] = useState(0)
@@ -105,7 +105,7 @@ function App({user,setUser}) {
   ]
   const [cartItems, setCartItems] = useState({});
   const [showButton, setShowButton] = useState({});
-  
+
 
   console.log(user, "user from app")
   const handleAddClick = (name) => {
@@ -148,30 +148,59 @@ function App({user,setUser}) {
   return (
 
     <div className="App">
-      <Navbar user={user} />
+      <Navbar user={user} dessertList={dessertList} />
       {/* <AuthTest onLogin={setUser} /> */}
-      <h1>Desserts</h1>
+      {/* <h1>Desserts</h1> */}
       <div className="mainContent">
         <div className="dessertGrid">
           {dessertList.map((dessert) =>
-            <div key={dessert.name} className="dessertCard">
-              <img src={dessert.image.desktop} alt={dessert.name} className="dessert-img" />
+            // <div key={dessert.name} className="dessertCard">
+            //   <img src={dessert.image.desktop} alt={dessert.name} className="dessert-img" />
+            //   <h4>{dessert.category}</h4>
+            //   <h3>{dessert.name}</h3>
+            //   <p>${dessert.price}</p>
+            //   {!showButton[dessert.name] ? (
+            //     <button onClick={() => handleAddClick(dessert.name)}>
+            //       <span><img src={addToCartSymbol} /></span>
+            //       <span>Add to Cart</span>
+            //     </button>
+            //   ) : (
+            //     <>
+            //       <button onClick={() => addToCart(dessert)}><img src={increment} /></button>
+
+            //       <span>{cartItems[dessert.name]?.count || 0}</span>
+            //       <button onClick={() => removeFromCart(dessert)}><img src={decrement} /></button>
+            //     </>
+            //   )}
+            // </div>
+            <div key={dessert.name} className={`dessertCard ${showButton[dessert.name] ? "inCart" : ""}`}>
+              <div className="imageWrapper">
+                <img src={dessert.image.desktop} alt={dessert.name} className="dessert-img" />
+
+                {!showButton[dessert.name] ? (
+                  <button className="addButton" onClick={() => handleAddClick(dessert.name)}>
+                    <img src={addToCartSymbol} />
+                    <span>Add to Cart</span>
+                  </button>
+                ) : (
+                  <div className="counterControls">
+                    <button onClick={() => addToCart(dessert)}>
+                      <img src={increment} />
+                    </button>
+
+                    <span>{cartItems[dessert.name]?.count || 0}</span>
+
+                    <button onClick={() => removeFromCart(dessert)}>
+                      <img src={decrement} />
+                    </button>
+                  </div>
+                )}
+              </div>
+
               <h4>{dessert.category}</h4>
               <h3>{dessert.name}</h3>
               <p>${dessert.price}</p>
-              {!showButton[dessert.name] ? (
-                <button onClick={() => handleAddClick(dessert.name)}>
-                  <span><img src={addToCartSymbol} /></span>
-                  <span>Add to Cart</span>
-                </button>
-              ) : (
-                <>
-                  <button onClick={() => addToCart(dessert)}><img src={increment} /></button>
 
-                  <span>{cartItems[dessert.name]?.count || 0}</span>
-                  <button onClick={() => removeFromCart(dessert)}><img src={decrement} /></button>
-                </>
-              )}
             </div>
           )}
         </div>

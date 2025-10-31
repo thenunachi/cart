@@ -21,7 +21,7 @@
   text-align: center;
   font-size: 1.4rem;
   font-weight: 600;
-  color: #e91e63;
+  color: #d3531a;
   margin-bottom: 1rem;
 }
 
@@ -72,6 +72,6 @@
 .previousOrders .order-total {
   text-align: right;
   font-weight: 600;
-  color: #e91e63;
+  color: #d3531a;
   font-size: 1rem;
 }

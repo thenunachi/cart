@@ -173,6 +173,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0.8rem 1rem;
+            width: 94%;
   }
 
   .navbar-logo {

@@ -20,7 +20,7 @@ design/
 
 # Ignore specific files
 data.json
-index.html
+
 preview.jpg
 README-template.md
 README.md

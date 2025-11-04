@@ -75,3 +75,52 @@
   color: #d3531a;
   font-size: 1rem;
 }
+/* -----------------------------
+   MOBILE RESPONSIVE UI FOR PREVIOUS ORDERS
+----------------------------- */
+@media screen and (max-width: 768px) {
+  .previousOrders {
+    padding: 16px 18px;
+    border-radius: 16px;
+    max-height: 55vh;
+  }
+
+  .previousOrders h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .previousOrders .order-card {
+    padding: 12px 14px;
+    margin-bottom: 0.8rem;
+  }
+
+  .previousOrders .order-date {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+
+  .previousOrders ul {
+    margin-left: 15px;
+    margin-bottom: 6px;
+  }
+
+  .previousOrders li {
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+
+  .previousOrders .order-total {
+    font-size: 0.9rem;
+  }
+
+  /* Scrollbar for mobile */
+  .previousOrders::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .previousOrders::-webkit-scrollbar-thumb {
+    background: #f2a6b3;
+    border-radius: 8px;
+  }
+}

@@ -222,3 +222,81 @@ body {
   height: 18px;
 } */
 
+/* -----------------------------
+   MOBILE RESPONSIVE UI
+----------------------------- */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 20px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .mainContent {
+    flex-direction: column;
+        gap: 20px;
+        margin-top: 2%;
+        width: 73%;
+        display: flex
+;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin-left: 13%;
+  }
+
+  .dessertGrid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+
+  .dessertCard {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .addButton,
+  .counterControls {
+    bottom: 8px;
+    padding: 4px 6px;
+    gap: 4px;
+  }
+
+  .cartSummary {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .dessertCard h4 {
+    font-size: 0.7rem;
+  }
+
+  .dessertCard h3 {
+    font-size: 0.9rem;
+  }
+
+  .dessertCard p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Optional keyframe for subtle mobile animations */
+@keyframes mobileFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dessertCard {
+    animation: mobileFadeIn 0.5s ease-in-out;
+  }
+}

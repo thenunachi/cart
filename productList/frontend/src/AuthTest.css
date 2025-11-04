@@ -74,3 +74,45 @@
 .signup-btn:hover {
   background-color: #15803d;
 }
+/* -----------------------------
+   MOBILE RESPONSIVE STYLES
+----------------------------- */
+@media screen and (max-width: 480px) {
+  .auth-card {
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+
+  .auth-title {
+    font-size: 1.15rem;
+  }
+
+  .auth-input {
+   font-size: 0.95rem;
+        padding: 9px 0px;
+    
+  }
+
+  .auth-button-row {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .login-btn,
+  .signup-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Slightly larger phones & tablets */
+@media screen and (max-width: 768px) {
+  .auth-card {
+   margin-top: 60px;
+        padding: 16px;
+  }
+}

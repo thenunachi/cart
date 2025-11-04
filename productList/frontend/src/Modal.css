@@ -144,3 +144,74 @@
     transform: translateY(0);
   }
 }
+
+/* -----------------------------
+   MOBILE RESPONSIVE UI FOR MODAL
+----------------------------- */
+@media screen and (max-width: 768px) {
+  .modalBox {
+    width: 67%;
+        padding: 16px;
+  }
+
+  .modalTitle {
+    font-size: 1.4rem;
+  }
+
+  .modalSubtitle {
+    font-size: 0.85rem;
+  }
+
+  .modalContent {
+    padding: 12px;
+  }
+
+  .modalItemImage {
+    width: 35px;
+    height: 35px;
+  }
+
+  .modalItemName {
+    font-size: 0.9rem;
+  }
+
+  .modalItemDetails {
+    font-size: 0.75rem;
+  }
+
+  .modalItemCount,
+  .modalItemEach,
+  .modalItemTotal {
+    font-size: 0.8rem;
+  }
+
+  .orderTotalSection {
+    flex-direction: row;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: 0.9rem;
+  }
+
+  .newOrderButton {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Optional subtle mobile animation */
+@keyframes mobileModalFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modalBox {
+    animation: mobileModalFadeIn 0.3s ease-in-out;
+  }
+}

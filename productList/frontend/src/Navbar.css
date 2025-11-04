@@ -164,3 +164,94 @@
   margin-right: 10px;
   object-fit: cover;
 }
+/* -----------------------------
+   MOBILE RESPONSIVE UI FOR NAVBAR & MODAL
+----------------------------- */
+@media screen and (max-width: 768px) {
+  /* Navbar adjustments */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-search {
+            width: 91%;
+        max-width: none;
+        margin-bottom: 0.6rem;
+  }
+
+  .navbar-search input {
+    font-size: 0.85rem;
+  }
+
+  .account-btn {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* Modal adjustments */
+  .modal-content {
+          width: 74%;
+        padding: 1rem;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .close-btn {
+    font-size: 1.2rem;
+    top: 8px;
+    right: 10px;
+  }
+
+  .logout-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  /* Search results adjustments */
+  .searchResults {
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: none;
+    padding: 6px;
+  }
+
+  .searchResultItem {
+    padding: 5px;
+  }
+
+  .searchResultImg {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+  }
+}
+
+/* Optional subtle animation for mobile modals */
+@keyframes mobileModalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content {
+    animation: mobileModalFadeIn 0.25s ease-in-out;
+  }
+}

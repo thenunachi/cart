@@ -7,7 +7,7 @@ from config import Config
 from flask_cors import CORS
 import json
 import os
-import psycopg2
+# import psycopg2
 
 
 

@@ -15,8 +15,8 @@ import psycopg2
 
 
 app = Flask(__name__) # create the Flask application object.
-DATABASE_URL = os.environ.get("DATABASE_URL")
-conn = psycopg2.connect(DATABASE_URL)
+# DATABASE_URL = os.environ.get("DATABASE_URL")
+# conn = psycopg2.connect(DATABASE_URL)
 CORS(app)
 app.config.from_object(Config) #load configuration settings (DB URI, JWT secret, etc.) into app.config from your Config class.
 

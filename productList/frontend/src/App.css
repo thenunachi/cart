@@ -1,0 +1,224 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #fdf8f6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  background: url("./images/b.jpg");
+}
+
+/* Main wrapper card */
+.App {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+
+
+.mainContent {
+    display: flex;
+    gap: 28px;
+    margin-top: 4%;
+}
+
+
+/* Dessert grid: left side */
+.dessertGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  flex: 3;
+}
+
+/* Dessert card */
+.dessertCard {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dessert-img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover zoom on image */
+.imageWrapper:hover .dessert-img {
+  transform: scale(1.04);
+}
+
+/* -----------------------------
+   ADD BUTTON + COUNTER CONTROLS
+----------------------------- */
+.addButton,
+.counterControls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Add to Cart button */
+.addButton {
+      background: #fff;
+    border: 1px solid #ccc;
+    padding: 0px -5px;
+}
+
+/* Counter Controls (active state) */
+.counterControls {
+  gap: 35px;
+  background: #b34722;
+  padding: 6px 10px;
+  border: none;
+  color: #fff;
+}
+
+/* Hover Animation */
+.addButton:hover,
+.counterControls:hover {
+  transform: translateX(-50%) scale(1.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Icon + Count styling */
+.counterControls button img {
+  filter: brightness(0.3) sepia(1) hue-rotate(-20deg) saturate(5);
+}
+
+.counterControls span {
+  color: #ff4d6d;
+  font-weight: bold;
+}
+
+/* Optional glow on hover */
+.counterControls:hover {
+  box-shadow: 0 0 10px rgba(255, 77, 109, 0.6);
+}
+
+/* -----------------------------
+   CART SUMMARY
+----------------------------- */
+.cartAddition {
+  background-color: #fff;
+  border: 1px solid #d3531a;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cartControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cartControls button {
+  background-color: #d3531a;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Cart summary: right side */
+.cartSummary {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+/* When item is in cart, highlight the image */
+.inCart .dessert-img {
+  border: 2px solid #d3531a; /* orange border */
+  border-radius: 12px;
+}
+
+/* Increment / Decrement controls */
+.counterControls {
+  background: #d3531a; /* orange background */
+  color: white;
+  border: none;
+}
+
+/* Increment / decrement button icons */
+.counterControls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.counterControls button img {
+  filter: none; /* remove the dim filter */
+}
+
+/* Count text inside counter */
+.counterControls span {
+  color: white;
+  font-weight: bold;
+}
+
+.dessertCard h4 {
+  margin: 10px 0 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #b34722; /* warm orange tone to match your theme */
+  /* text-transform: uppercase; */
+  letter-spacing: 0.5px;
+}
+
+.dessertCard h3 {
+  margin: 4px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333; /* strong readable text */
+}
+
+.dessertCard p {
+  margin: 6px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d3531a; /* highlight price */
+}
+/* .addButton span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d3531a;   
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 4px; 
+} */
+/* .addButton img {
+  width: 18px;
+  height: 18px;
+} */
+

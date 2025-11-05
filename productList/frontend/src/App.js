@@ -205,7 +205,7 @@ function App({ user, setUser }) {
           )}
         </div>
 
-        <CartSummary user={user} cartItems={cartItems} onRemoveItem={handleRemoveItem} />
+        <CartSummary user={user} cartItems={cartItems} setCartItems={setCartItems} onRemoveItem={handleRemoveItem} />
       </div>
     </div>
   );

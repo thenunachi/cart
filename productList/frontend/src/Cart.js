@@ -5,7 +5,7 @@ import "./cart.css";
 import Modal from './Modal';
 import { saveOrder } from "./services/orderServices"
 
-export default function CartSummary({ user, cartItems, onRemoveItem }) {
+export default function CartSummary({ user, cartItems,setCartItems, onRemoveItem }) {
     console.log(user,cartItems, "cartItems from cart")
     const [total, setTotal] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function CartSummary({ user, cartItems, onRemoveItem }) {
         (acc, item) => acc + item.count,
         0
     );
-
+const clearCart = () => setCartItems({});
     useEffect(() => {
         const newTotal = Object.values(cartItems).reduce(
             (acc, item) => acc + item.price * item.count,
@@ -97,6 +97,7 @@ export default function CartSummary({ user, cartItems, onRemoveItem }) {
                         onClose={() => setIsModalOpen(false)}
                         cartItems={cartItems}
                         total={total}
+                        clearCart={clearCart}
                     />
                 </>
             ) : (

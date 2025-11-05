@@ -2,9 +2,9 @@ import React from "react";
 import "./Modal.css";
 import { FaCheckCircle } from "react-icons/fa";
 
-const Modal = ({ isOpen, onClose, cartItems, total }) => {
+const Modal = ({ isOpen, onClose, cartItems, total, clearCart }) => {
   if (!isOpen) return null;
-console.log(cartItems,"modal file cart")
+  console.log(cartItems, "modal file cart")
   return (
     <div className="modalOverlay" onClick={onClose}>
       <div className="modalBox" onClick={(e) => e.stopPropagation()}>
@@ -45,7 +45,10 @@ console.log(cartItems,"modal file cart")
           </div>
         </div>
 
-        <button className="newOrderButton" onClick={onClose}>
+        <button className="newOrderButton" onClick={() => {
+          clearCart();     // ✅ Clears cart (sets cartItems to {})
+          onClose();       // ✅ Closes modal
+        }}>
           Start New Order
         </button>
       </div>
